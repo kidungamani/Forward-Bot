@@ -2,7 +2,7 @@ import re, os, time, sys, shutil, psutil, asyncio
 
 from config import Config, Txt
 from pyrogram import Client, filters, enums 
-from helper.utils import humanbytes, get_time
+from utils import humanbytes, get_time
 
 
 @Client.on_message(filters.private & filters.command('start') & filters.user(Config.ADMINS))
