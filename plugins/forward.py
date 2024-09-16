@@ -26,8 +26,12 @@ async def forward(bot, message):
     else: return
 
     method = await bot.ask(message.chat.id, text="send the method `user` or `bot`", filters=filters.text)
-    client = bot.userbot if method.text == 'user' else bot
-    
+    client = bot
+    if method.text == 'user':
+        client = bot.userbot 
+        if not bot.userbot: 
+            return await message.reply('Userbot not founded. process cancelled')
+            
     try:  await client.get_chat(chat_id)
     except ChannelInvalid:  return await message.reply('This may be a private channel / group. Make me an admin over there to index the files.')
     except (UsernameInvalid, UsernameNotModified): return await message.reply('Invalid Link specified.')
