@@ -4,7 +4,7 @@ class Config:
     BOT_TOKEN = "6897118835:AAG3sc-Fy65nOGyFg6CLwLd1pMuwv6wnMr8"
     USER_SESSION = ""
     ADMINS = [7157319028]
-    TO_CHANNEL = int()
+    TO_CHANNEL = int(-1002168699450)
     
     
 class Txt:
