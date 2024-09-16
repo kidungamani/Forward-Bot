@@ -1,6 +1,7 @@
 apt update && apt upgrade -y
 apt install git -y       
 pip install -U pip
+git pull
 
 git clone https://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@github.com/kidungamani/Forward-Bot fwd                  
 cd fwd
