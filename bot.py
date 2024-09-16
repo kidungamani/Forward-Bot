@@ -8,7 +8,7 @@ logging.getLogger(__name__)
 class Bot(Client):
     def __init__(self):
         super().__init__(
-            name="FwdBot"
+            name="FwdBot",
             bot_token=Config.BOT_TOKEN,
             api_hash=Config.API_HASH,
             api_id=Config.API_ID,
