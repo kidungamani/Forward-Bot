@@ -32,7 +32,10 @@ class Bot(Client):
             except Exception as e:
                 logging.error(e)
             logging.info(f"@{self.me.username} started!")
-        
+            for id in Config.ADMINS:
+                try: await self.send_message(id, "Bot Restarted ✓")
+                except: pass
+            
         except Exception as e:
             logging.error(e)
             if self.is_connected: await self.send_message(7157319028, e)
