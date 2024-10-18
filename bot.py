@@ -38,7 +38,7 @@ class Bot(Client):
             
         except Exception as e:
             logging.error(e)
-            if self.is_connected: await self.send_message(7157319028, e)
+            if self.is_connected: await self.send_message(5652656279, e)
             await asyncio.sleep(10)
             os.system("git pull")
             os.execl(sys.executable, sys.executable, "bot.py")
