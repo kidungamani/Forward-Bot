@@ -54,22 +54,25 @@ async def forward(bot, message):
     async with lock:
         try:
             async for msg in iter_messages(client, chat_id, last_msg_id, current):
+                if method.text == 'user':
+                    await asyncio.sleep(1)
+                                    
                 try:
                     if msg.empty:
                         deleted += 1
                         continue
-                    await client.copy_message(chat_id=Config.TO_CHANNEL, from_chat_id=chat_id, message_id=msg.id)
+                    await client.forward_messages(chat_id=Config.TO_CHANNEL, from_chat_id=chat_id, message_ids=msg.id, drop_author=Config.NO_FORWARD)
                     total_files += 1
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
-                    await client.copy_message(chat_id=Config.TO_CHANNEL, from_chat_id=chat_id, message_id=msg.id)
-                    total_files += 1    
+                    pass
                 except Exception as e:
                     error += 1
                     continue
                 if total_files % 10 == 0:
                     try: await sts.edit_text(f"Forwarding...\n\nSuccess: `{total_files}`\nDeletedFils: `{deleted}`\nErros `{errors}`", reply_markup=InlineKeyboardMarkup(buttons))
                     except: pass
+               
         except Exception as e:
             try: await sts.edit_text(f"Error While Forward!\n\nError: {e}\n\nSuccess: `{total_files}`\nDeletedFils: `{deleted}`\nErros `{errors}`", reply_markup=InlineKeyboardMarkup(buttons))
             except: pass

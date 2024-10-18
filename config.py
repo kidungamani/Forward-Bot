@@ -6,6 +6,9 @@ class Config:
     ADMINS = [7295048990]
     TO_CHANNEL = int(-1002184726711)
     
+    NO_FORWARD = False  # 'True' or 'False'
+    
+    
     
 class Txt:
     START = """
